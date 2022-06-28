@@ -1,4 +1,5 @@
 [workspace]
 members = [
     "examples/arrow-basic-test",
+    "examples/arrow-csv-test",
 ]
