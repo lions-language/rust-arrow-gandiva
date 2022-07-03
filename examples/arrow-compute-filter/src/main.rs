@@ -1,5 +1,5 @@
 use arrow::array::BooleanArray;
-use arrow::compute::filter;
+use arrow::compute::filter_record_batch;
 use arrow::csv;
 use arrow::datatypes::{DataType, Field, Schema};
 use std::fs::File;
@@ -18,8 +18,8 @@ fn main() {
 
     println!("before: batch={:?}", batch);
 
-    let filter_array = BooleanArray::from(vec![true, false, false, true, false]);
-    let c = filter(&batch.columns(), &filter_array).unwrap();
+    let filter_array = BooleanArray::from(vec![true]);
+    let c = filter_record_batch(&batch, &filter_array).unwrap();
 
     println!("after: batch={:?}", c);
 }
